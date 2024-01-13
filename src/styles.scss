@@ -6,12 +6,17 @@
 
 body {
     font-family: 'Poppins', sans-serif;
+    @apply bg-neutral-800
 }
 
 
 h1 {
     font-size: 1.5rem;
     font-weight: 600;
+}
+
+input {
+    font-size: 1rem;
 }
 
 input[type=text]  {

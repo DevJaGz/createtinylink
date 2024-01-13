@@ -1,5 +1,6 @@
 <header class="
-    h-screen 
+    px-3
+    h-[80lvh]
     bg-neutral-900 
     text-neutral-200 
     relative 
@@ -7,13 +8,43 @@
     flex-col 
     items-center 
     justify-center
+    rounded-bl-none
+    rounded-br-none
+    sm:rounded-bl-[38px]
+    sm:rounded-br-[38px]
     gap-8
     ">
-    <figure class="bg-neutral-800 rounded-2xl flex flex-col justify-center items-center p-4 gap-4">
-        <img class="w-full max-w-20 object-contain" src="assets/images/svg/logo.svg" alt="Link sharing illustration">
+    <figure class="shadow-xl shadow-black/20 bg-neutral-800 rounded-2xl flex flex-col justify-center px-8 py-6 gap-6">
+        <div class="flex gap-4 items-center">
+            <img class="w-full max-w-20 object-contain" src="assets/images/svg/logo.svg"
+                alt="Link sharing illustration">
+            <h1>Tiny Link</h1>
+        </div>
+        <p class="text-balance">Create a <strong>tiny link</strong> easily!</p>
     </figure>
-    <app-input-button buttonLabel="Create" class="w-full max-w-[600px]" />
+    <app-input-button buttonLabel="Create" inputPlaceholder="Paste a link here" class="w-full max-w-[600px] shadow-sm shadow-black/20
+    " />
+    <div class="
+    absolute 
+    h-32 
+    bottom-0 
+    translate-y-[64px] 
+    left-1/2 
+    -translate-x-1/2 
+    flex 
+    items-center 
+    rounded-2xl 
+    bg-neutral-800
+    shadow-xl
+    shadow-black/20
+    px-4 py-2
+
+    w-[95%] 
+    max-w-[1024px]">
+        BANNER
+    </div>
 </header>
-<main class=" bg-neutral-800 text-neutral-200">
-    Hi
+<main class=" bg-neutral-800 text-neutral-200 min-h-[80lvh] pt-36">
+    <div>HI</div>
+
 </main>

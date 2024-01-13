@@ -12,4 +12,6 @@ export class InputButtonComponent {
   @Input({required: true})
   buttonLabel = '';
 
+  @Input()
+  inputPlaceholder = '';
 }
