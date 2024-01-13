@@ -14,4 +14,7 @@ export class InputButtonComponent {
 
   @Input()
   inputPlaceholder = '';
+
+  @Input()
+  inputClassStyles = '';
 }
