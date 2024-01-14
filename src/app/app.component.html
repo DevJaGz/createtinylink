@@ -1,14 +1,1 @@
-<main class="h-full text-white bg-zinc-900 grid place-items-center">
-    <div class="flex flex-col gap-8 px-2 sm:px-0 max-w-screen-xl w-full">
-        <div class="text-center text-pretty">
-            <h1>Create Tiny Link</h1>
-            <!-- <p class="[&>strong]:text-slate-500">An easy way to <strong> create </strong> and <strong> share </strong> a <strong> tiny link </strong></p> -->
-            <p class="[&>strong]:text-slate-500">
-                Easy <strong>peasy</strong>
-            </p>
-        </div>
-        <app-input-button (createLink)="createLink($event)" buttonLabel="Create" inputPlaceholder="Paste your link here"
-            class="block mx-auto w-full max-w-[700px]" />
-        <app-display-link [url]="tinyURL"/>
-    </div>
-</main>
+<router-outlet></router-outlet>
