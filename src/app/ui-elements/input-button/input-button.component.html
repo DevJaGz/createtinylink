@@ -1,4 +1,4 @@
-<div class="relative">
+<div class="relative mb-2">
     <span class="grid place-items-center absolute top-1/2 -translate-y-1/2 left-6 -rotate-45 text-white">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circles-relation" width="24"
             height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
@@ -8,10 +8,16 @@
             <path d="M14.813 17.883a6 6 0 1 0 -4.496 -3.954" />
         </svg>
     </span>
-    <input type="text" class="
+    <input #inputModel="ngModel" [(ngModel)]="value" required
+        pattern="[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?"
+        type="text" class="
      outline-none focus:outline focus:outline-zinc-800 transition-colors placeholder:text-zinc-500
-    pl-16 pr-[124px] h-16 text-white bg-zinc-950  shadow-sm shadow-black/20  rounded-full w-full" [class]="inputClassStyles" [placeholder]="inputPlaceholder">
-    <button class="
+    pl-16 h-16 text-white bg-zinc-950  shadow-sm shadow-black/20  rounded-full w-full"
+        [class]="inputClassStyles"
+        [ngClass]="{'pr-[124px]': !inputModel.errors, 'pr-16':  inputModel.errors}"
+        [placeholder]="inputPlaceholder">
+    <button [disabled]="!inputModel.valid" (click)="onCreateLink(inputModel)" (keydown.enter)="onCreateLink(inputModel)"
+        class="
         block 
         absolute 
         top-1/2 
@@ -22,7 +28,22 @@
         bg-zinc-800 
         hover:bg-zinc-700
         transition-colors
-        text-white rounded-full">
+        text-white rounded-full
+        disabled:opacity-0
+        disabled:pointer-events-none
+        ">
         {{buttonLabel}}
     </button>
+    @if (inputModel.dirty && inputModel.touched) {
+
+    @if (inputModel.hasError('required')) {
+    <small class="input-floating-error">A URL is required</small>
+    }
+    @else if (inputModel.hasError('pattern')){
+    <small class="input-floating-error">The URL is not valid</small>
+    }
+
+    }
+
+
 </div>

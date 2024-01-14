@@ -35,3 +35,14 @@ input[type=text]  {
     border: none;
     outline: none;
 }
+
+input.ng-invalid.ng-dirty.ng-touched{
+    box-shadow: 0 0 2px red !important;
+}
+
+
+@layer utilities {
+    .input-floating-error {
+        @apply absolute -bottom-[50%] left-4 text-[red]
+    }
+}
