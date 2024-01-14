@@ -7,7 +7,9 @@
                 Easy <strong>peasy</strong>
             </p>
         </div>
-        <app-input-button (createLink)="createLink($event)" buttonLabel="Create" inputPlaceholder="Paste your link here"
+        <app-input-button
+        (changeValue)="cleanCopyMessage()"
+        (createLink)="createLink($event)" buttonLabel="Create" inputPlaceholder="Paste your link here"
             class="block mx-auto w-full max-w-[700px]" />
         <app-display-link [url]="tinyURL"/>
     </div>

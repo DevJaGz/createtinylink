@@ -22,7 +22,7 @@ export class RedirectComponent implements OnInit {
     this._linkService.getLink({ tinyId }).subscribe({
       next: ( link ) => {
         if (link){
-          window.location.href = link?.originalURL;
+          window.location.replace(link?.originalURL);
         }
       }
     })

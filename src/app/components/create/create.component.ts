@@ -30,4 +30,8 @@ export class CreateComponent {
       }
     });
   }
+
+  cleanCopyMessage(): void {
+    this.tinyURL = '';
+  }
 }
