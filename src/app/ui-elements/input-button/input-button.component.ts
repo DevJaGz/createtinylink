@@ -29,13 +29,23 @@ export class InputButtonComponent {
   @Output()
   changeValue = new EventEmitter<NgModel>();
 
+  showClearButton = false;
+
   value: string | null = null;
 
   onCreateLink(input: NgModel): void {
     this.createLink.emit(input);
+    this.showClearButton = true;
   }
 
   onChangeValue(): void {
+    this.changeValue.emit();
+    this.showClearButton = false;
+  }
+
+  onClearInput(input: NgModel): void {
+    this.value = '';
+    input.control.markAsPristine();
     this.changeValue.emit();
   }
 

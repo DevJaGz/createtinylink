@@ -14,7 +14,9 @@
      outline-none focus:outline focus:outline-zinc-800 transition-colors placeholder:text-zinc-500
     pl-16 pr-[124px] h-16 text-white bg-zinc-950  shadow-sm shadow-black/20  rounded-full w-full" [class]="inputClassStyles"
         [placeholder]="inputPlaceholder">
-    <button [disabled]="!inputModel.valid" (click)="onCreateLink(inputModel)" (keydown.enter)="onCreateLink(inputModel)"
+    <button 
+    *ngIf="inputModel.value && !showClearButton"
+    [disabled]="!inputModel.valid" (click)="onCreateLink(inputModel)" (keydown.enter)="onCreateLink(inputModel)"
         class="
         block 
         absolute 
@@ -27,10 +29,26 @@
         hover:bg-zinc-700
         transition-colors
         text-white rounded-full
-        disabled:opacity-0
-        disabled:pointer-events-none
         ">
         {{buttonLabel}}
+    </button>
+    <button 
+    *ngIf="inputModel.value && showClearButton"
+    (click)="onClearInput(inputModel)" (keydown.enter)="onClearInput(inputModel)"
+        class="
+        block 
+        absolute 
+        top-1/2 
+        -translate-y-1/2 
+        right-2 
+        px-6 
+        py-3 
+        bg-red-800 
+        hover:bg-red-700
+        transition-colors
+        text-white rounded-full
+        ">
+        Clear
     </button>
 
     @if (inputModel.dirty && inputModel.touched) {
