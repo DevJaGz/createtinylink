@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { InputButtonComponent } from './ui-elements/input-button/input-button.component';
+import { NgModel } from '@angular/forms';
 
 
 @Component({
@@ -16,4 +17,9 @@ import { InputButtonComponent } from './ui-elements/input-button/input-button.co
 })
 export class AppComponent {
   title = 'createtinylink';
+
+  createLink(input: NgModel): void {
+    console.log(input)
+  }
+
 }

@@ -12,9 +12,7 @@
         pattern="[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?"
         type="text" class="
      outline-none focus:outline focus:outline-zinc-800 transition-colors placeholder:text-zinc-500
-    pl-16 h-16 text-white bg-zinc-950  shadow-sm shadow-black/20  rounded-full w-full"
-        [class]="inputClassStyles"
-        [ngClass]="{'pr-[124px]': !inputModel.errors, 'pr-16':  inputModel.errors}"
+    pl-16 pr-[124px] h-16 text-white bg-zinc-950  shadow-sm shadow-black/20  rounded-full w-full" [class]="inputClassStyles"
         [placeholder]="inputPlaceholder">
     <button [disabled]="!inputModel.valid" (click)="onCreateLink(inputModel)" (keydown.enter)="onCreateLink(inputModel)"
         class="
@@ -34,6 +32,7 @@
         ">
         {{buttonLabel}}
     </button>
+
     @if (inputModel.dirty && inputModel.touched) {
 
     @if (inputModel.hasError('required')) {
@@ -44,6 +43,5 @@
     }
 
     }
-
 
 </div>
