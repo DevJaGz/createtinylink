@@ -8,8 +8,6 @@ export interface Link {
 }
 
 export interface LinkSearchParams {
-    id?: string;
     originalURL?: string;
-    tinyURL?: string;
     tinyId?: string;
 }

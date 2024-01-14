@@ -4,6 +4,7 @@ import { InputButtonComponent } from '../../ui-elements/input-button/input-butto
 import { DisplayLinkComponent } from '../../ui-elements/display-link/display-link.component';
 import { LinkService } from '../../services/link.service';
 import { NgModel } from '@angular/forms';
+import { of, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-create',
@@ -26,7 +27,16 @@ export class CreateComponent  {
 
   createLink(input: NgModel): void {
     this._handleBlockUI(true);
-    this._linkService.createLink(input.value).subscribe({
+    const originalURL = input.value;
+    this._linkService.getLink({
+      originalURL
+    }).pipe(switchMap((link) => {
+      if (link){
+        return of(link);
+      }
+      return  this._linkService.createLink(originalURL)
+    }))
+    .subscribe({
       next: (link) => {
         if (link) {
           this._handleBlockUI(false);
