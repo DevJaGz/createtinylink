@@ -14,3 +14,8 @@
         <app-display-link [url]="tinyURL"/>
     </div>
 </main>
+@if (showBlockUI) {
+    <div class="z-10 fixed inset-0 bg-black grid place-items-center opacity-85 pointer-events-none select-none">
+        <p class="text-white animate-bounce">Creating ...</p>
+    </div>
+}

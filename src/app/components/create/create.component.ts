@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, Renderer2, inject } from '@angular/core';
 import { InputButtonComponent } from '../../ui-elements/input-button/input-button.component';
 import { DisplayLinkComponent } from '../../ui-elements/display-link/display-link.component';
 import { LinkService } from '../../services/link.service';
@@ -16,19 +16,33 @@ import { NgModel } from '@angular/forms';
   templateUrl: './create.component.html',
   styles: ``
 })
-export class CreateComponent {
+export class CreateComponent  {
+
   tinyURL = '';
   private readonly _linkService = inject(LinkService);
+  private readonly _renderer = inject(Renderer2);
 
+  showBlockUI = false;
 
   createLink(input: NgModel): void {
+    this._handleBlockUI(true);
     this._linkService.createLink(input.value).subscribe({
       next: (link) => {
         if (link) {
-         this.tinyURL = link.tinyURL;
+          this._handleBlockUI(false);
+          this.tinyURL = link.tinyURL;
         }
       }
     });
+  }
+
+  _handleBlockUI(value: boolean): void {
+    this.showBlockUI = value;
+    if (value){
+      this._renderer.addClass(document.body, 'loading');
+      return;
+    }
+    this._renderer.removeClass(document.body, 'loading');
   }
 
   cleanCopyMessage(): void {
