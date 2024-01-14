@@ -7,6 +7,7 @@ import { DataModule } from './data/data.module';
 import { LinkService } from './services/link.service';
 import { IDGeneratorService } from './services/id-generator.service';
 import { HOST } from './constants/link.constant';
+import { DisplayLinkComponent } from './ui-elements/display-link/display-link.component';
 
 
 @Component({
@@ -16,12 +17,13 @@ import { HOST } from './constants/link.constant';
     CommonModule, 
     RouterOutlet,
     InputButtonComponent,
+    DisplayLinkComponent
   ],
   templateUrl: './app.component.html',
 })
 export class AppComponent {
   title = 'createtinylink';
-
+  tinyURL = '';
   private readonly _linkService = inject(LinkService);
 
 
@@ -29,7 +31,7 @@ export class AppComponent {
     this._linkService.createLink(input.value).subscribe({
       next: (link) => {
         if (link) {
-          alert(`Your has been created! look:\n ${link}`)
+         this.tinyURL = link.tinyURL;
         }
       }
     });

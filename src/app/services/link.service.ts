@@ -3,7 +3,7 @@ import { LinkModel } from "../data/model/link.model";
 import { Link, LinkSearchParams } from "../interfaces/link.interface";
 import { IDGeneratorService } from "./id-generator.service";
 import { HOST } from "../constants/link.constant";
-import { Observable } from "rxjs";
+import { Observable, of } from "rxjs";
 
 @Injectable({
    providedIn: 'root'
@@ -27,6 +27,7 @@ export abstract class LinkService {
          createdAt: new Date().getTime(),
          tinyId
       }
+      return of(link);
       return this.linkModel.createLink(link);
    }
 }

@@ -26,10 +26,18 @@ export class InputButtonComponent {
   @Output()
   createLink = new EventEmitter<NgModel>();
 
+  @Output()
+  cleaned = new EventEmitter<NgModel>();
+
+
   value: string | null = null;
 
   onCreateLink(input: NgModel): void {
     this.createLink.emit(input);
+  }
+
+  onEmpty(): void {
+    this.cleaned.emit();
   }
 
 }
