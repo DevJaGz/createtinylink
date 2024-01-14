@@ -12,12 +12,7 @@ import { DisplayLinkComponent } from './ui-elements/display-link/display-link.co
   imports: [
     CommonModule, 
     RouterOutlet,
-
   ],
-  templateUrl: './app.component.html',
+  template: '<router-outlet></router-outlet>'
 })
-export class AppComponent {
-  title = 'createtinylink';
-  
-
-}
+export class AppComponent {}
