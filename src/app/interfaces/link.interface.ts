@@ -1,5 +1,6 @@
 export interface Link {
     id?: string;
+    tinyId?: string;
     createdAt?: number;
     originalURL: string;
     tinyURL: string;
@@ -10,4 +11,5 @@ export interface LinkSearchParams {
     id?: string;
     originalURL?: string;
     tinyURL?: string;
+    tinyId?: string;
 }

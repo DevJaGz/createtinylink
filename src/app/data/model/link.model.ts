@@ -1,7 +1,7 @@
-import { Signal } from "@angular/core";
 import { Link, LinkSearchParams } from "../../interfaces/link.interface";
+import { Observable } from "rxjs";
 
 export abstract class LinkModel {
-   abstract getLink(params: LinkSearchParams): Signal<Link>;
-   abstract createLink(link: Link): Signal<boolean>;
+   abstract getLink(params: LinkSearchParams): Observable<Link | null>;
+   abstract createLink(link: Link): Observable<Link | null>;
 }

@@ -5,6 +5,8 @@ import { InputButtonComponent } from './ui-elements/input-button/input-button.co
 import { NgModel } from '@angular/forms';
 import { DataModule } from './data/data.module';
 import { LinkService } from './services/link.service';
+import { IDGeneratorService } from './services/id-generator.service';
+import { HOST } from './constants/link.constant';
 
 
 @Component({
@@ -20,10 +22,17 @@ import { LinkService } from './services/link.service';
 export class AppComponent {
   title = 'createtinylink';
 
-  private readonly LinkService = inject(LinkService);
+  private readonly _linkService = inject(LinkService);
+
 
   createLink(input: NgModel): void {
-    console.log(input)
+    this._linkService.createLink(input.value).subscribe({
+      next: (link) => {
+        if (link) {
+          alert(`Your has been created! look:\n ${link}`)
+        }
+      }
+    });
   }
 
 }
